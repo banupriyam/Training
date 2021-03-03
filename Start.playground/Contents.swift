@@ -10,7 +10,7 @@ var xCodeForIOS = true//boolean
 
 //Tuples(grouping the values of differnt types)
 var list = ("Geetha",22,55.3)
-let (name,age,weight)=list
+let (name,age,weight) = list
 print("Name is:\(name)")
 print("Age is:\(age)")
 print("Weight is:\(weight)")
@@ -19,9 +19,9 @@ print("Name is \(list.0)")
 
 //Annotations
 let jeeps:Int
-jeeps=10
+jeeps = 10
 var favColor:String
-favColor="blue"
+favColor = "blue"
 
 //Printing Values
 print (favColor)
@@ -35,10 +35,38 @@ if weight > 60 {
     }
 
 
+//Type Safety and Type Inference
+
+var noOfItems: Float = 3
+noOfItems = 4.4
+
+//Numeric Literals
+print(35 * 46)
 
 
+//Integer Conversion
+
+var uint8max = UInt8.max
+var uint16max = UInt16.max
+var uint32max = UInt32.max
 
 
+var int8max = Int8.max
+var int16max = Int16.max
+var int32max = Int32.max
 
+
+//Type Aliases
+typealias StudName = String
+
+var stdName: StudName
+stdName = "Pugazh"
+
+
+//Optionals
+let possibleNumber = "123"
+let convertedNumber =  Int(possibleNumber)
+let userName = "xxx"
+let cuserName: Int? = Int(userName)
 
 
