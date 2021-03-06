@@ -245,3 +245,58 @@ let someVideoMode = VideoMode()
 someVideoMode.resolution.width = 1280
 print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 
+
+//Enumerations
+print("\n\n#######################################\nEnumerations\n#######################################")
+print("\nEnumeration defines Common type for Group of values\n\n")
+
+enum Eatables{
+    case Carrot
+    case Apple
+    case Onion
+    case Orange
+}
+var fruitS = Eatables.Orange
+//fruitS = .Orange
+switch fruitS {
+case .Apple:
+    print("Apples is a fruit")
+case .Orange:
+    print("Orange is a fruit")
+default:
+    print("Others are Vegitables")
+}
+//Iterating over Enumeration Cases
+
+enum Colors:CaseIterable{
+    case Red,Blue,Green,Yellow,Pink
+}
+let countOfColors = Colors.allCases.count
+print("\nNumber of colors are:\(countOfColors)")
+var rgb = Colors.Red
+rgb = .Blue
+rgb = .Green
+switch rgb {
+case .Red:
+    print("\n Red in RGB")
+case .Green:
+    print("\n Green in RGB")
+case .Blue:
+    print("\n Blue in RGB")
+default:
+    print("\n The color is not in RGB")
+}
+
+//Initialization
+print("\n\n#######################################\nInitialization\n#######################################")
+print("\n Initialization means preparing an instance for use.\nThe instance may belongs to a Class,Structure or Enumeration\n")
+struct Fahrenheit {
+    var temperature: Double
+    init() {
+        temperature = 32.0
+    }
+}
+var f = Fahrenheit()
+print("The default temperature is \(f.temperature)° Fahrenheit")
+
+
