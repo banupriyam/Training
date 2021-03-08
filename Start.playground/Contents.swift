@@ -176,11 +176,16 @@ closureVar = 6
 print("Given number \(closureVar) is " + (isOddClosure(closureVar) ? "Odd" : "Even"))
 
 
-func executeAfterPrinting100(closure: () -> Void) {
-    for i in 1...100 {
+func executeAfterPrinting10(closure: () -> Void) {
+    for i in 1...10 {
         print(i)
     }
     closure()
+
+}
+
+executeAfterPrinting10 {
+    print("Very Good")
 }
 
 let num = [55,12,0,37,3456,543672,776]
@@ -246,6 +251,30 @@ someVideoMode.resolution.width = 1280
 print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 
 
+print("\n\n#######################################\nStruct Class difference\n#######################################")
+struct AbStruct {
+    var a: Int
+}
+
+class AbClass {
+    var a: Int = 0
+    init(a: Int) {
+        self.a = a
+    }
+}
+
+let structValue = AbStruct(a: 5)
+var structValue2 = structValue
+structValue2.a = 6
+print(structValue.a)
+print(structValue2.a)
+
+let classValue = AbClass(a: 5)
+var classValue2 = classValue
+classValue2.a = 6
+print(classValue.a)
+print(classValue2.a)
+
 //Enumerations
 print("\n\n#######################################\nEnumerations\n#######################################")
 print("\nEnumeration defines Common type for Group of values\n\n")
@@ -287,6 +316,16 @@ default:
     print("\n The color is not in RGB")
 }
 
+enum WhatsappSentStatus: Int {
+    case notSent
+    case sent
+    case delivered
+    case seen
+}
+
+print(WhatsappSentStatus.seen.rawValue)
+
+
 //Initialization
 print("\n\n#######################################\nInitialization\n#######################################")
 print("\n Initialization means preparing an instance for use.\nThe instance may belongs to a Class,Structure or Enumeration\n")
@@ -298,5 +337,86 @@ struct Fahrenheit {
 }
 var f = Fahrenheit()
 print("The default temperature is \(f.temperature)° Fahrenheit")
+
+//Protocols
+print("\n\n#######################################\nProtocols & Protocol Extensions\n#######################################\n")
+protocol ExplProtocol {
+    var name1: String{get}
+    var name2: String{get}
+}
+
+struct Merge: ExplProtocol{
+    var name1: String
+    var name2: String
+}
+    
+  
+protocol ContactsValues {
+    var name: String {get set}
+    var phone: String {get set}
+    var email: String? {get set}
+    
+    func isValidEmail() -> Bool
+}
+
+extension ContactsValues {
+    func isValidEmail() -> Bool {
+        if let email = email {
+            if email.contains("@"), email.contains(".")  {
+                return true
+            }
+        }
+        return false
+    }
+}
+
+struct Contact: ContactsValues {
+    
+    var name: String
+    
+    var phone: String
+    
+    var email: String?
+    
+    func contactRelatedFunction() {
+        print("Contact is assigned")
+    }
+   
+}
+
+struct User: ContactsValues {
+    var name: String
+    
+    var phone: String
+    
+    var email: String?
+    
+    func userRelatedFunction() {
+        print("User is assigned")
+    }
+}
+
+let contact = Contact(name: "Banu", phone: "123", email: "r@e.in")
+
+print("is valid email entered : ", contact.isValidEmail())
+
+
+let user = User(name: "Banu", phone: "123", email: "r@e.in")
+
+print("is valid email entered : ", user.isValidEmail())
+
+
+
+print("\n\n#######################################\nType Casting\n#######################################\n")
+
+var contactValue: ContactsValues = contact
+
+if let contact = contactValue as? Contact {
+    contact.contactRelatedFunction()
+}
+
+if let user = contactValue as? User {
+    user.userRelatedFunction()
+}
 
 
